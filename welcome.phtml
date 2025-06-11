@@ -1,0 +1,36 @@
+<?php
+/**	op-asset-template:/welcome.phtml
+ *
+ * @genesis    2018-10-30  op-app-skeleton-2020:/404.php
+ * @created    2025-06-11  op-asset-template:/404.phtml
+ * @version    1.0
+ * @package    op-asset-template
+ * @author     Tomoaki Nagahara
+ * @copyright  Tomoaki Nagahara All right reserved.
+ */
+
+/**	namespace
+ *
+ */
+namespace OP;
+
+?>
+<h1>Welcome to the onepiece-framework!!</h1>
+
+<aside>
+	<h1>This welcome page can be replaced</h1>
+	<p>
+		You can replace the 404 Not Found page.
+		This file is loaded from the following path:
+	</p>
+	<pre><code><?= OP()->Path(__FILE__) ?></code></pre>
+	<?php if( OP()->Unit()->isInstalled('layout') ): ?>
+	<p>
+		Please create a <code>welcome.phtml</code> file at the following path. Your custom design will be used to display the welcome page.
+	</p>
+	<pre><code><?= 'asset:/layout/' . OP()->Layout()->Name() . '/template/welcome.phtml' ?></code></pre>
+	<?php endif; ?>
+</aside>
+
+<!-- Translation -->
+<?php OP()->Template('t9in.phtml') ?>
