@@ -30,3 +30,6 @@ $hash_css = OP()->WebPack()->Hash('css');
 
 <!-- JavaScript -->
 <script type="text/javascript" src="<?= "{$app_root}webpack/js/index.js?layout={$layout}&hash={$hash_js}" ?>" defer></script>
+
+<!-- title -->
+<title><?= OP()->App()->Title() ?></title>
