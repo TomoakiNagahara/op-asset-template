@@ -12,3 +12,21 @@
  *
  */
 namespace OP;
+
+//	...
+$app_root = OP()->URL('app:/');
+
+//	...
+$layout   = OP()->Request('layout') ?? Config::Get('layout')['name'] ??  null;
+
+//	...
+$hash_js  = OP()->WebPack()->Hash('js');
+$hash_css = OP()->WebPack()->Hash('css');
+
+?>
+
+<!-- Stylesheet -->
+<link type="text/css" href="<?= "{$app_root}webpack/css/index.css?layout={$layout}&hash={$hash_css}" ?>" rel="stylesheet">
+
+<!-- JavaScript -->
+<script type="text/javascript" src="<?= "{$app_root}webpack/js/index.js?layout={$layout}&hash={$hash_js}" ?>" defer></script>
