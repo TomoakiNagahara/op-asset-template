@@ -14,6 +14,9 @@
  */
 namespace OP;
 
+//	Get layout name.
+$layout = OP()->Unit()->Layout()->Name();
+
 ?>
 <h1>Welcome to the onepiece-framework!!</h1>
 
@@ -24,12 +27,14 @@ namespace OP;
 		This file is loaded from the following path:
 	</p>
 	<pre><code><?= OP()->Path(__FILE__) ?></code></pre>
+
 	<?php if( OP()->Unit()->isInstalled('layout') ): ?>
 	<p>
 		Please create a <code>welcome.phtml</code> file at the following path. Your custom design will be used to display the welcome page.
 	</p>
-	<pre><code><?= 'asset:/layout/' . OP()->Layout()->Name() . '/template/welcome.phtml' ?></code></pre>
+	<pre><code><?= "asset:/layout/{$layout}/template/welcome.phtml" ?></code></pre>
 	<?php endif; ?>
+
 </aside>
 
 <!-- Translation -->
