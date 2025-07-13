@@ -1,0 +1,29 @@
+<?php
+/**	op-skeleton-2020:/asset/template/layout/footer.phtml
+ *
+ * @creation  2018-04-12
+ * @version   1.0
+ * @package   op-skeleton-2020
+ * @author    Tomoaki Nagahara
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/**	namespace
+ *
+ * @creation  2019-04-03
+ */
+namespace OP;
+
+//	...
+if( OP::isAdmin() ){
+	echo '<!-- '.OP::Path(__FILE__).' -->';
+}else{
+//	OP()->Template('google/analytics.phtml');
+}
+
+?>
+<footer>
+	<div translate="no">
+		<?= Config::Get('app')['copyright'] ?? null ?>
+	</div>
+</footer>
