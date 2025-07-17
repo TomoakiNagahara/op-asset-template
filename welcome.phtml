@@ -18,7 +18,7 @@ namespace OP;
 $layout = OP()->Unit()->Layout()->Name();
 
 ?>
-<section data-t9n="true" data-t9n-locale="en:us">
+<section data-translation="true" data-translation-locale="en:us">
 
 <h1>Welcome to the onepiece-framework!!</h1>
 
@@ -44,6 +44,6 @@ $layout = OP()->Unit()->Layout()->Name();
 <!-- Translation -->
 <?php
 if( OP()->Config('translation')['execute'] ?? false ){
-	OP()->Template('t9n.phtml');
+	OP()->Template('translation.phtml');
 }
 ?>
