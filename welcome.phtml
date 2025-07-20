@@ -18,38 +18,68 @@ namespace OP;
 $layout = OP()->Unit()->Layout()->Name();
 
 ?>
+<!-- Introduction of the ONEPIECE Framework -->
 <section data-translation="true" data-translation-locale="en:us">
+	<h1>The ONEPIECE Framework is insanely great!!</h1>
+	<p>
+		Welcome to the ONEPIECE Framework!!<br/>
+		Was installing the ONEPIECE Framework easy?<br/>
+		The ONEPIECE Framework is designed to be intuitive.<br/>
+		Because it’s intuitive, it’s simple and straightforward—with no confusion.
+	</p>
+</section>
 
-<h1>The ONEPIECE Framework is insanely great!!</h1>
-<p>
-	Welcome to the ONEPIECE Framework!!
-	Was installing the ONEPIECE Framework easy?
-	The ONEPIECE Framework is designed to be intuitive.
-	Because it’s intuitive, it’s simple and straightforward—with no confusion.
-</p>
-
-<aside>
+<!-- Introduction of the welcome page -->
+<section data-translation="true" data-translation-locale="en:us">
 	<h1>This welcome page can be replaced</h1>
 	<p>
-		You can replace the this welcome page.
+		You can replace the this welcome page.<br/>
 		This file is loaded from the following path:
 	</p>
 	<pre><code><?= OP()->Path(__FILE__) ?></code></pre>
 
 	<?php if( OP()->Unit()->isInstalled('layout') ): ?>
 	<p>
-		Please create a <code>welcome.phtml</code> file at the following path.
+		Please create a <code>welcome.phtml</code> file at the following path.<br/>
 		You can display a custom welcome page.
 	</p>
 	<pre><code><?= "asset:/layout/{$layout}/template/welcome.phtml" ?></code></pre>
 	<?php endif; ?>
-</aside>
-
 </section>
 
-<!-- Translation -->
-<?php
-if( OP()->Config('translation')['execute'] ?? false ){
-	OP()->Template('translation.phtml');
-}
-?>
+<!-- Introduction of the HTML pass-through -->
+<section data-translation="true">
+	<h1>HTML Pass-through</h1>
+	<p>
+		HTML pass-through is a feature that allows HTML pages to be output directly.<br/>
+		You can display a fully laid-out page without having to create empty controllers or methods.<br/>
+		<a href="index.html">Click here for details and to view a sample page.</a>
+	</p>
+</section>
+
+<!-- Introduction of the develop page -->
+<section>
+	<h1 data-translation="true">For developers</h1>
+	<?php if(!file_exists( OP::Path('app:/_develop/') ) ): ?>
+		<div data-translation="true">
+			<h1>You can create a develop page</h1>
+			<p>
+				Please run the following command and reload this page.
+			</p>
+			<pre><code>ln -s asset/develop _develop</code></pre>
+		</div>
+	<?php else: ?>
+		<p data-translation="true">The following link will take you to the develop page.</p>
+		<div data-translation="false" class="code">
+			<a href="_develop">_develop</a>
+		</div>
+	<?php endif; ?>
+</section>
+
+<!-- Translation Service -->
+<?php if( OP()->Config('execute')['translation'] ?? false ): ?>
+	<section data-t9n="true" data-t9n-locale="en:us">
+		<h1>Translation Service</h1>
+	</section>
+	<div id="op-translate-language-area"></div>
+<?php endif; ?>
