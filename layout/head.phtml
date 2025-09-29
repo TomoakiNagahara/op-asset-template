@@ -17,6 +17,9 @@ namespace OP;
 $app_root = OP()->URL('app:/');
 
 //	...
+$html     = OP()->Config('html');
+
+//	...
 $layout   = OP()->Request('layout') ?? Config::Get('layout')['name'] ??  null;
 
 //	...
@@ -25,11 +28,35 @@ $hash_css = OP()->Unit()->WebPack()->Hash('css');
 
 ?>
 
-<!-- Stylesheet -->
-<link type="text/css" href="<?= "{$app_root}webpack/css/index.css?layout={$layout}&hash={$hash_css}" ?>" rel="stylesheet">
+		<!-- Charset -->
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type"  content="text/html; charset=utf-8" />
 
-<!-- JavaScript -->
-<script type="text/javascript" src="<?= "{$app_root}webpack/js/index.js?layout={$layout}&hash={$hash_js}" ?>" defer></script>
+		<!-- For SmartPhone -->
+		<!-- Disable auto scaling -->
+		<meta name="viewport"            content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+		<!-- Disable phone number highlight -->
+		<meta name="format-detection"    content="telephone=no" />
 
-<!-- title -->
-<title><?= OP()->Unit()->App()->Title() ?></title>
+		<!-- favicon -->
+		<link type="image/x-icon" href="<?= "{$app_root}favicon.ico" ?>" rel="icon" />
+
+		<?php if( $icon = $html['icon'] ?? null ): ?>
+			<!-- Icon -->
+			<link type="image/png"    href="<?= "{$app_root}{$icon}" ?>"    rel="apple-touch-icon" />
+			<link type="image/png"    href="<?= "{$app_root}{$icon}" ?>"    rel="apple-touch-icon-precomposed" />
+		<?php endif; ?>
+
+		<?php if( $canonical = $html['canonical'] ?? null ): ?>
+			<!-- Canonical -->
+			<link rel="canonical" href="<?= $canonical ?>" />
+		<?php endif; ?>
+
+		<!-- Stylesheet -->
+		<link type="text/css" href="<?= "{$app_root}webpack/css/index.css?layout={$layout}&hash={$hash_css}" ?>" rel="stylesheet">
+
+		<!-- JavaScript -->
+		<script type="text/javascript" src="<?= "{$app_root}webpack/js/index.js?layout={$layout}&hash={$hash_js}" ?>" defer></script>
+
+		<!-- title -->
+		<title><?= $html['title'] ?></title>
