@@ -12,3 +12,48 @@
  *
  */
 namespace OP;
+
+//	Change http status code.
+http_response_code(404);
+
+//	...
+require_once( _ROOT_CORE_.'/function/GetExtension.php' );
+require_once( _ROOT_CORE_.'/function/GetMimeFromExtension.php' );
+
+//	...
+$ext  = GetExtension($_SERVER['REQUEST_URI']);
+$mime = $ext ? GetMimeFromExtension($ext) : 'text/html';
+$type = explode('/', $mime)[0];
+$code = OP()->Request('code') ?? 'NotFound';
+$args = [];
+
+//	...
+switch( $type ){
+	//	...
+	case 'text':
+		$mime = 'text/html';
+		$file = '404.phtml';
+		break;
+
+		//	...
+	case 'image':
+		$mime = 'image/svg+xml';
+		$file = '404.svg';
+		$args = [
+			'code'   => $code,
+			'width'  => 200,
+			'length' => 180,
+		];
+		$layout = false;
+		break;
+
+	default:
+		if( OP()->isAdmin() ){
+			OP()->Error("Does not support this mime type: {$mime}");
+		}
+}
+
+//	...
+OP()->Unit()->Layout()->Execute( $layout ?? true );
+OP()->MIME($mime);
+OP()->Template($file, $args);
