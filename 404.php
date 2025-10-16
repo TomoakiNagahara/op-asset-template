@@ -17,22 +17,31 @@ namespace OP;
 http_response_code(404);
 
 //	...
-require_once( _ROOT_CORE_.'/function/GetExtension.php' );
-require_once( _ROOT_CORE_.'/function/GetMimeFromExtension.php' );
-
-//	...
-$ext  = GetExtension($_SERVER['REQUEST_URI']);
-$mime = $ext ? GetMimeFromExtension($ext) : 'text/html';
+if( OP()->isShell() ){
+	$ext  = 'txt';
+	$mime = 'text/plain';
+}else{
+	//	...
+	require_once( _ROOT_CORE_.'/function/GetExtension.php' );
+	require_once( _ROOT_CORE_.'/function/GetMimeFromExtension.php' );
+	//	...
+	$ext  = GetExtension($_SERVER['REQUEST_URI']);
+	$mime = $ext ? GetMimeFromExtension($ext) : 'text/html';
+}
 $type = explode('/', $mime)[0];
 $code = OP()->Request('code') ?? 'NotFound';
 $args = [];
+$layout = true;
 
 //	...
 switch( $type ){
 	//	...
 	case 'text':
-		$mime = 'text/html';
-		$file = '404.phtml';
+		if( $ext === 'txt' ){
+			$file = '404.txt';
+		}else{
+			$file = '404.phtml';
+		}
 		break;
 
 		//	...
