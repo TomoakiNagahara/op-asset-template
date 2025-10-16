@@ -62,7 +62,13 @@ switch( $type ){
 		}
 }
 
+//	Check layout template file exists.
+$meta = 'asset:/layout/' . OP()->Unit()->Layout()->Name() . "/template/{$file}";
+if(!file_exists( OP()->Path($meta) ) ){
+	$meta = $file;
+}
+
 //	...
-OP()->Unit()->Layout()->Execute( $layout ?? true );
+OP()->Unit()->Layout()->Execute( $layout );
 OP()->MIME($mime);
-OP()->Template($file, $args);
+OP()->Template($meta, $args);
