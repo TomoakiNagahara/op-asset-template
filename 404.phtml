@@ -32,10 +32,10 @@ http_response_code(404);
 		You can replace the 404 Not Found page.
 		This file is loaded from the following path:
 	</p>
-	<pre><code><?= __FILE__ ?></code></pre>
+	<pre><code><?= OP()->Path(__FILE__) ?></code></pre>
 	<p>
 		Please create a <code>404.phtml</code> file at the following path. Your custom design will be used to display the 404 page.
 	</p>
-	<pre><code><?= OP()->Path('asset:/layout/' . OP()->Layout('name') . '/template/404.phtml') ?></code></pre>
+	<pre><code><?= OP()->Path('asset:/layout') . OP()->Unit()->Layout()->Name() . '/template/404.phtml' ?></code></pre>
 </aside>
 <?php endif; ?>
