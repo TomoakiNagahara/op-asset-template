@@ -39,7 +39,7 @@ $hash_css = OP()->Unit()->WebPack()->Hash('css');
 		<meta name="format-detection"    content="telephone=no" />
 
 		<!-- favicon -->
-		<link type="image/x-icon" href="<?= "{$app_root}favicon.ico" ?>" rel="icon" />
+		<link type="image/x-icon" href="<?= $html['favicon'] ?? 'favicon.ico' ?>" rel="icon" />
 
 		<?php if( $icon = $html['icon'] ?? null ): ?>
 			<!-- Icon -->
