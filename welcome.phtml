@@ -59,14 +59,35 @@ $layout = OP()->Unit()->Layout()->Name();
 
 <!-- Introduction of the develop page -->
 <section>
-	<h1 data-translation="true">For developers</h1>
+	<h1 data-translation="true">You can create a developers page</h1>
 	<?php if(!file_exists( OP::Path('app:/_develop/') ) ): ?>
 		<div data-translation="true">
-			<h1>You can create a develop page</h1>
 			<p>
-				Please run the following command and reload this page.
+				You run the following command in a shell environment:
 			</p>
-			<pre><code>ln -s asset/develop _develop</code></pre>
+			<ol>
+				<li>
+					Move to the Git root: <br/>
+					<code><?= OP()->Path('git:/') ?></code>
+				</li>
+				<li>
+					Enter the following command to add a submodule: <br/>
+					<code>git submodule add https://github.com/onepiece-framework/op-module-develop.git asset/module/develop</code>
+				</li>
+				<?php if( _ROOT_GIT_ !== _ROOT_APP_ ): ?>
+				<li>
+					Move to the APP root directory: <br/>
+					<code><?= OP()->Path('app:/') ?></code>
+				</li>
+				<?php endif; ?>
+				<li>
+					Create an alias with the following command: <br/>
+					<code>ln -s asset/module/develop _develop</code>
+				</li>
+				<li>
+					Once you've completed the above steps, reload this page.
+				</li>
+			</ol>
 		</div>
 	<?php else: ?>
 		<p data-translation="true">The following link will take you to the develop page.</p>
@@ -78,6 +99,7 @@ $layout = OP()->Unit()->Layout()->Name();
 
 <!-- Translation Service -->
 <?php if( OP()->Config('execute')['translation'] ?? false ): ?>
+	<hr/>
 	<section data-t9n="true" data-t9n-locale="en:us">
 		<h1>Translation Service</h1>
 	</section>
