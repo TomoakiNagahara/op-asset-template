@@ -13,9 +13,6 @@
  */
 namespace OP;
 
-//	Change http status code.
-http_response_code(404);
-
 //	...
 if( OP()->isShell() ){
 	$ext  = 'txt';
@@ -37,6 +34,7 @@ $layout = true;
 switch( $type ){
 	//	...
 	case 'text':
+		http_response_code(404);
 		if( $ext === 'txt' ){
 			$file = '404.txt';
 		}else{
