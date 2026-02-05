@@ -74,22 +74,16 @@ $layout = OP()->Unit()->Layout()->Name();
 			</p>
 			<ol>
 				<li>
-					Move to the Git root: <br/>
-					<code><?= OP()->Path('git:/') ?></code>
-				</li>
-				<li>
-					Enter the following command to add a submodule: <br/>
-					<code>git submodule add https://github.com/onepiece-framework/op-module-develop.git asset/module/develop</code>
-				</li>
-				<?php if( _ROOT_GIT_ !== _ROOT_APP_ ): ?>
-				<li>
 					Move to the APP root directory: <br/>
 					<code><?= OP()->Path('app:/') ?></code>
 				</li>
-				<?php endif; ?>
 				<li>
 					Create an alias with the following command: <br/>
+					<?php if( _ROOT_GIT_ == _ROOT_APP_ ): ?>
 					<code>ln -s asset/module/develop _develop</code>
+					<?php else: ?>
+					<code>ln -s ../asset/module/develop _develop</code>
+					<?php endif; ?>
 				</li>
 				<li>
 					Once you've completed the above steps, reload this page.
