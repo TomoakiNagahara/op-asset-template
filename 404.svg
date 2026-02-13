@@ -30,6 +30,9 @@ if( empty($x) ){
 	$x = $width / 2;
 }
 
+//	...
+$code = htmlspecialchars($code, ENT_QUOTES | ENT_XML1, 'UTF-8');
+
 ?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Simple 404 badge: 100x100, transparent bg, white text with black outline -->
