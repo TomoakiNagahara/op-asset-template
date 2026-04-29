@@ -12,8 +12,22 @@
  */
 namespace OP;
 
-//	...
-OP()->Unit()->WebPack()->Auto('asset:/webpack/js/Translator.js');
-OP()->Unit()->WebPack()->Auto('asset:/webpack/js/Translate_Language.js');
-OP()->Unit()->WebPack()->Auto('asset:/webpack/css/color.css');
-OP()->Unit()->WebPack()->Auto('asset:/webpack/css/Translate_Language.css');
+//	Leave early.
+if(!OP()->Config('execute')['translation'] ?? false ){
+	return;
+}
+
+//	WebPack
+OP()->Unit()->WebPack()->Auto(
+	'asset:/webpack/js/Translator.js',
+	'asset:/webpack/js/Translate_Language.js',
+	'asset:/webpack/css/color.css',
+	'asset:/webpack/css/Translate_Language.css',
+);
+
+?>
+<!-- Translation Service -->
+<div data-t9n="true" data-t9n-locale="en:us">
+	<h1>Translation Service</h1>
+</div>
+<div id="op-translate-language-area"></div>
