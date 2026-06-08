@@ -19,9 +19,6 @@ if( OP()->isShell() ){
 	return;
 }
 
-//	Get layout name.
-$layout = OP()->Unit()->Layout()->Name();
-
 ?>
 <!-- Introduction of the ONEPIECE Framework -->
 <section data-translation="true" data-translation-locale="en:us">
@@ -44,13 +41,11 @@ $layout = OP()->Unit()->Layout()->Name();
 	</p>
 	<pre><code><?= OP()->Path(__FILE__) ?></code></pre>
 
-	<?php if( OP()->Unit()->isInstalled('layout') ): ?>
 	<p>
 		Please create a <code>welcome.phtml</code> file at the following path.<br/>
 		You can display a custom welcome page.
 	</p>
-	<pre><code><?= "asset:/layout/{$layout}/template/welcome.phtml" ?></code></pre>
-	<?php endif; ?>
+	<pre><code><?= "app:/welcome.phtml" ?></code></pre>
 </section>
 
 <!-- Introduction of the HTML pass-through -->
