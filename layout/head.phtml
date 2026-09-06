@@ -37,6 +37,9 @@ $hash_css = OP()->Unit()->WebPack()->Hash('css');
 		<!-- Disable phone number highlight -->
 		<meta name="format-detection"    content="telephone=no" />
 
+		<!-- meta -->
+		<?php if( $html['description'] ?? null ): ?><meta name="description" content="<?= $html['description'] ?>" /><?php endif; ?>
+
 		<!-- favicon -->
 		<link type="image/x-icon" href="<?= $html['favicon'] ?? OP()->URL('app:/favicon.ico') ?>" rel="icon" />
 
