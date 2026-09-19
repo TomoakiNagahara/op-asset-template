@@ -18,7 +18,12 @@ if( OP::isAdmin() ){
 	echo '<!-- ' . OP::Path(__FILE__) . ' -->';
 }
 
+//	...
+$app   = Config::Get('app');
+$top   = $app['top']   ?? OP::URL('app:/');
+$title = $app['title'] ?? 'TOP';
+
 ?>
 <header>
-	<a href="<?= OP::URL('app:/') ?>"><?= Config::Get('app')['title'] ?? 'TOP' ?></a>
+	<a href="<?= $top ?>"><?= $title ?></a>
 </header>
